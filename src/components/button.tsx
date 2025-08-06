@@ -12,7 +12,7 @@ export default function Icon(){
 <AiOutlineRight />
 
     </button>
-
+    
 
     </div>
 
