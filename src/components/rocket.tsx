@@ -4,7 +4,7 @@ const geist = Geist({
 })
 const kanit = Kanit({
 
-  weight: '600',
+  weight: '300',
 })
 export default function Rocket() {
   return(
