@@ -1,3 +1,4 @@
+'use client';
 import {Geist, Kanit, Ubuntu} from 'next/font/google';
 const geist = Geist({
   weight: '300',
@@ -10,8 +11,10 @@ const kanit = Kanit({
 const ubuntu = Ubuntu({
   weight: '500',
 })
+
 export default function Data(){
   const dataStyle = 'w-fit h-fit flex flex-col justify-center items-center border-black border-solid pb-[10px] border-b-2'
+  
   return(
   <>
   <div className='w-[65%] p-[80px]'>
