@@ -4,46 +4,45 @@ import Rocket from "../components/rocket.tsx";
 import Countdown from '../components/countdown.tsx';
 import Icon from '../components/button.tsx';
 import Description from './description.tsx';
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 
-export interface rocket{
-  count: number;
-}
 
 export default function Home() {
-  const [rockets, setRocket] = useState<rocket[rockets]>([]);
+  const [launch, setLaunch] = useState("");
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   
-useEffect(() => {
+  useEffect(() => {
     async function loadLaunch() {
       try {
         setLoading(true);
-        // Note: Your URL seems to be for a specific launch (with a UUID), not a list
-        const response = await fetch('https://fdo.rocketlaunch.live/json/launches/next/5');
+        const response = await fetch('https://ll.thespacedevs.com/2.3.0/launches/upcoming/');
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         
         const data = await response.json();
-        setRocket(data.result);
-        console.log(rockets);
+        setLaunch(data.results);
+  
+        setError(null);
       } catch (error) {
         console.error(error);
-        setError('Failed to fetch launch data');
+        setError('Failed to load launch data');
       } finally {
         setLoading(false);
       }
     }
     
     loadLaunch();
-  }, []);        
+  }, [])      
+
   return (
     <>   <div className='w-full h-[100vh]'>
 
     <div className='z-0 absolute w-full h-full'>
     <div className='w-full h-[80%] flex'>
-    <Rocket/>
+    <Rocket message={launch}/>
     <Icon/>
     </div>
     <Countdown/>
