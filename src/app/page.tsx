@@ -6,9 +6,9 @@ import Icon from '../components/button.tsx';
 import Description from './description.tsx';
 import { useState, useEffect } from 'react';
 
-
 export default function Home() {
-  const [launch, setLaunch] = useState("");
+  const [launches, setLaunches] = useState([]);
+  const [nextLaunch, setNextLaunch] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   
@@ -23,8 +23,14 @@ export default function Home() {
         }
         
         const data = await response.json();
-        setLaunch(data.results);
-  
+        console.log(data);
+        setLaunches(data.results);
+        
+        // Set the next launch (first in the array)
+        if (data.results && data.results.length > 0) {
+          setNextLaunch(data.results);
+        }
+
         setError(null);
       } catch (error) {
         console.error(error);
@@ -35,28 +41,32 @@ export default function Home() {
     }
     
     loadLaunch();
-  }, [])      
+  }, []);
 
-  return (
-    <>   <div className='w-full h-[100vh]'>
 
-    <div className='z-0 absolute w-full h-full'>
-    <div className='w-full h-[80%] flex'>
-    <Rocket message={launch}/>
-    <Icon/>
-    </div>
-    <Countdown/>
-   
-
-    </div>
-
-   <Image src="/starship.png" width={6000} height={6000} className='w-full h-[100vh] ' alt="background" />
-   
-   </div> 
-    <div className='w-full h-[100vh]'>
-        <Description/>
-    </div>
+if (nextLaunch != null){
+     return (
+    <>
+      <div className='w-full h-[100vh]'>
+        <div className='z-0 absolute w-full h-full'>
+          <div className='w-full h-[80%] flex'>
+            <Rocket message={nextLaunch} />
+            <Icon />
+          </div>
+          <Countdown launch={nextLaunch} />
+        </div>
+        <Image 
+          src={nextLaunch[1].image.image_url}
+          width={6000} 
+          height={6000} 
+          className='w-full h-[100vh]' 
+          alt="background" />
+      </div> 
+      <div className='w-full h-[100vh]'>
+        <Description launches={launches} />
+      </div>
     </>
-
   );  
 }
+  }
+
