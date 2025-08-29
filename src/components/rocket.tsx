@@ -26,13 +26,13 @@ export default function Rocket({message}) {
     <>
       <div className='w-[50%] h-[100%] flex justify-center items-start p-[30px] flex-col'>
         <button className='bg-[#cfef00] rounded-[100px] font-bold py-[2px] px-[10px]'>
-          <span>{message[0].status.abbrev}</span>
+          <span>{message.status.abbrev}</span>
         </button>
         <h1 className="text-white text-6xl font-[600] text-[82px]">
-          {message[1].name || 'Mission Name TBA'}
+          {message.name || 'Mission Name TBA'}
         </h1>
-        <p className={`text-white text-base pr-[75px] ${geist.className}`}>{message[0].mission.description}</p>
-        <h2 className={`text-white ${kanit.className}`}>{message[0].net.slice(0,9)}</h2>
+        <p className={`text-white text-base pr-[75px] ${geist.className}`}>{message.mission.description}</p>
+        <h2 className={`text-white ${kanit.className}`}>{message.net.slice(0,9)}</h2>
       </div>
     </>
   );

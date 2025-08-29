@@ -5,13 +5,12 @@ import Countdown from '../components/countdown.tsx';
 import Icon from '../components/button.tsx';
 import Description from './description.tsx';
 import { useState, useEffect } from 'react';
-
+import {nextLaunch} from '../lib/utils.ts';
 export default function Home() {
-  const [launches, setLaunches] = useState([]);
   const [nextLaunch, setNextLaunch] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+  const [index, setIndex] = useState(1);
   useEffect(() => {
     async function loadLaunch() {
       try {
@@ -23,8 +22,6 @@ export default function Home() {
         }
         
         const data = await response.json();
-        console.log(data);
-        setLaunches(data.results);
         
         // Set the next launch (first in the array)
         if (data.results && data.results.length > 0) {
@@ -42,7 +39,9 @@ export default function Home() {
     
     loadLaunch();
   }, []);
-
+const handleValueChange = (value) => {
+    setIndex(value);
+  };
 
 if (nextLaunch != null){
      return (
@@ -50,20 +49,20 @@ if (nextLaunch != null){
       <div className='w-full h-[100vh]'>
         <div className='z-0 absolute w-full h-full'>
           <div className='w-full h-[80%] flex'>
-            <Rocket message={nextLaunch} />
-            <Icon />
+            <Rocket message={nextLaunch[index]} />
+            <Icon onValueChange={handleValueChange}/>
           </div>
-          <Countdown launch={nextLaunch} />
+          <Countdown launch={nextLaunch[index]} />
         </div>
         <Image 
-          src={nextLaunch[1].image.image_url}
+          src={nextLaunch[index].image.image_url}
           width={6000} 
           height={6000} 
           className='w-full h-[100vh]' 
           alt="background" />
       </div> 
       <div className='w-full h-[100vh]'>
-        <Description launches={launches} />
+        <Description />
       </div>
     </>
   );  
