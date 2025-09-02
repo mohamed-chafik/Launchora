@@ -7,14 +7,27 @@ export function NextLaunch(index: number){
 
   return index;
 }
-// launches.ts
+// launches.ts (fixed)
 export interface Launch {
   id: string;
   url: string;
-  name: string;
+  name: string; // Changed from number to string
+  image?: {
+    image_url: string;
+  };
+  // Add other properties that you expect from the API
 }
-export async function FetchLaunch(url: string, index: number): Promise<Launch[]>{
+
+export interface LaunchesResponse {
+  results: Launch[];
+  // Add other properties from the API response if needed
+}
+
+export async function FetchLaunch(url: string): Promise<LaunchesResponse> {
   const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
   const data = await response.json();
   return data;
 }
