@@ -12,13 +12,13 @@ export default function Home() {
   const [nextLaunch, setNextLaunch] = useState<Launch[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [index, setIndex] = useState(0); // Start with 0 instead of 4
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
     async function loadLaunch() {
       try {
         setLoading(true);
-        const launches: LaunchesResponse = await FetchLaunch('https://ll.thespacedevs.com/2.3.0/launches/upcoming/');
+        const launches: LaunchesResponse = await FetchLaunch('https://ll.thespacedevs.com/2.3.0/launches/upcoming/?limit=100');
         setNextLaunch(launches.results);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'An error occurred');
@@ -32,6 +32,7 @@ export default function Home() {
 
   const handleValueChange = (value: number) => {
     setIndex(value);
+  
   };
 
   if (loading) {
@@ -48,6 +49,8 @@ export default function Home() {
 
   // Ensure index is within bounds
   const currentLaunch = nextLaunch[Math.min(index, nextLaunch.length - 1)];
+
+
 
   return (
     <>
