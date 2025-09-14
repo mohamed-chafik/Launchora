@@ -7,13 +7,12 @@ import Icon from '../components/button';
 import Description from './description';
 import { useState, useEffect } from 'react';
 import { FetchLaunch, Launch, LaunchesResponse } from '../lib/utils';
-
 export default function Home() {
   const [nextLaunch, setNextLaunch] = useState<Launch[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [index, setIndex] = useState(0);
-
+  const [index, setIndex] = useState(1);
+ const [readMore, setReadmore] = useState(false);
   useEffect(() => {
     async function loadLaunch() {
       try {
@@ -50,17 +49,19 @@ export default function Home() {
   // Ensure index is within bounds
   const currentLaunch = nextLaunch[Math.min(index, nextLaunch.length - 1)];
 
-
+  const handleReadmore = () => {
+    setReadmore((prev) => !prev); // Toggle between true/false
+  };
 
   return (
     <>
       <div className='w-full h-[100vh]'>
-        <div className='z-0 absolute w-full h-full'>
+        <div className='z-0 absolute  w-full h-full'>
           <div className='w-full h-[80%] flex'>
             <Rocket message={currentLaunch} />
-            <Icon onValueChange={handleValueChange} />
+            <Icon onValueChange={handleValueChange}  />
           </div>
-          <Countdown launch={currentLaunch} />
+          <Countdown launch={currentLaunch.net} onClickReadmore={handleReadmore}/>
         </div>
    
         {currentLaunch.image && currentLaunch.image.image_url ? (
@@ -77,9 +78,7 @@ export default function Home() {
         )}
      </div> 
 
-      <div className='w-full h-[100vh]'>
-        <Description />
-      </div>
-    </>
+      {readMore && <Description />}
+      </>
   );
 }

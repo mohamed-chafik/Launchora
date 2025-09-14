@@ -20,7 +20,7 @@ export default function Data(){
   
   return(
   <>
-  <div className='w-[65%] p-[80px]'>
+  <div className='w-full p-[80px]'>
   <div className={dataStyle}>
   <span className={`${geist.className} text-sm text-[#979090]`}>Stages</span>
   <span className={`${ubuntu.className} text-xl`}>3</span>

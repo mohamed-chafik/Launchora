@@ -5,7 +5,7 @@ const geist = Geist({
 });
 
 const kanit = Kanit({
-  weight: '300',
+  weight: '500',
 });
 
 export default function Rocket({message}) {
@@ -24,15 +24,15 @@ export default function Rocket({message}) {
 
   return(
     <>
-      <div className='w-[50%] h-[100%] flex justify-center items-start p-[30px] flex-col'>
+      <div className='w-[50%] h-[100%] flex justify-center items-start p-[30px] flex-col gap-[6px]'>
         <button className='bg-[#cfef00] rounded-[100px] font-bold py-[2px] px-[10px]'>
           <span>{message.status.abbrev}</span>
         </button>
-        <h1 className="text-white text-6xl font-[600] text-[82px]">
+        <h1 className="text-white text-6xl font-[600] text-[50px]">
           {message.name || 'Mission Name TBA'}
         </h1>
-        <p className={`text-white text-base pr-[75px] ${geist.className}`}>{message.mission.description}</p>
-        <h2 className={`text-white ${kanit.className}`}>{message.net.slice(0,9)}</h2>
+        <p className={`text-white text-base pr-[75px] ${geist.className}`}>{(message.mission.description.slice(0,300)).slice(0, message.mission.description.slice(0,300).lastIndexOf('.') + 1)}</p>
+        <h2 className={`text-white font-bold ${kanit.className}`}>{message.net.slice(0,10)}</h2>
       </div>
     </>
   );
