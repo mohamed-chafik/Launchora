@@ -8,9 +8,9 @@ export default function Countdown({onClickReadmore, launch}) {
   console.log(launch);
   useEffect(() => {
     function count(todaydate,launchDate){
-      let days = (todaydate[0] - launchDate.slice(0,4)) + (todaydate[1] - launchDate.slice(5,7)) + (todaydate[2] - launchDate.slice(8,10)) 
+      let days = (todaydate[0] - launchDate.slice(0,4)) + (todaydate[1] - launchDate.slice(5,7)) + (todaydate[2] - launchDate.slice(8,10))
       let hours = ((24 - todaydate[3]) + parseInt(launchDate.slice(11,13))) 
-      console.log((Math.abs(days) * 24) + hours)
+      console.log((Math.abs(days)*24) + hours, days)
     }
     count(todayDate, launch)
   }, [launch, todayDate])
