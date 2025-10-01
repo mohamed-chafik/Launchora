@@ -1,42 +1,55 @@
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { useState ,useEffect} from 'react';
-export default function Countdown({onClickReadmore, launch}) {
+export default function Countdown({launch}) {
   const Clases = 'flex flex-col justify-center items-center';
   const numClass = 'text-3xl font-bold';
-  const today = new Date();
-  const todayDate = [today.getFullYear(),today.getMonth() + 1, today.getDate(), today.getHours(), today.getMinutes()]; 
-  console.log(launch);
+  const [countdown, updateCount] = useState([]);
+
   useEffect(() => {
-    function count(todaydate,launchDate){
-      let days = (todaydate[0] - launchDate.slice(0,4)) + (todaydate[1] - launchDate.slice(5,7)) + (todaydate[2] - launchDate.slice(8,10))
-      let hours = ((24 - todaydate[3]) + parseInt(launchDate.slice(11,13))) 
-      console.log((Math.abs(days)*24) + hours, days)
+    function count(launchDate) {
+      const today = new Date();
+      const todaydate = [today.getFullYear(), today.getMonth() + 1, today.getDate(), today.getHours(), today.getMinutes()]; 
+      let years = todaydate[0] - launchDate.slice(0,4) 
+      let months = (todaydate[1] - launchDate.slice(5,7)) 
+      let days = todaydate[2] - launchDate.slice(8,10)
+      let hours = (24 - todaydate[3]) + parseInt(launchDate.slice(11,13))
+      let minutes = (60 - todaydate[4]) + parseInt(launchDate.slice(15,17))
+      const countdowncal = [Math.abs((years * 365) + (months * 30) + days), hours, minutes]
+      updateCount(countdowncal);
     }
-    count(todayDate, launch)
-  }, [launch, todayDate])
-  
+
+    count(launch);
+    
+    const interval = setInterval(() => {
+      count(launch); // This uses the current launch value
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [launch]); // Effect re-runs when launch changes
+
+ 
   return(
     <>
     <div className='absolute z-1 w-[100%] h-[20%] text-white flex justify-center items-center'>
   <div className="w-[30%] flex justify-evenly">
 
    <div className={Clases}>
-    <span className={numClass}>3</span>
+    <span className={numClass}>{countdown[0]}</span>
     <span >Days</span>
     </div>
     
     <div className={Clases}>
-    <span className={numClass}>18</span>
+    <span className={numClass}>{countdown[1]}</span>
     <span>Hours</span>
     </div>
 
     <div className={Clases}>
-    <span className={numClass}>30</span>
+    <span className={numClass}>{countdown[2]}</span>
     <span >Minutes</span>
     </div>
 
   </div> 
-  <button className='absolute right-[18px] flex justify-center items-center p-[10px]  hover:rounded-[17px] hover:bg-[#ffffff47] cursor-pointer' onClick={onClickReadmore}><IoIosAddCircleOutline /> ReadMore</button>
+  <button className='absolute right-[18px] flex justify-center items-center p-[10px]  hover:rounded-[17px] hover:bg-[#ffffff47] cursor-pointer' ><IoIosAddCircleOutline /> ReadMore</button>
     </div>
     </>
   )
