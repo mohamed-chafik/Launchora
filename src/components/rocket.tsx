@@ -2,10 +2,12 @@ import {Geist, Kanit} from 'next/font/google';
 
 const geist = Geist({
   weight: '300',
+    subsets: ["latin"], // or ["latin", "latin-ext"]
 });
 
 const kanit = Kanit({
   weight: '500',
+    subsets: ["latin"], // or ["latin", "latin-ext"]
 });
 
 export default function Rocket({message}) {
