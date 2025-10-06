@@ -64,18 +64,14 @@ export default function Home() {
           <Countdown launch={currentLaunch.net} onClickReadmore={handleReadmore}/>
         </div>
    
-        {currentLaunch.image && currentLaunch.image.image_url ? (
-          <Image 
-            src={currentLaunch.image.image_url}
-            width={6000} 
-            height={6000} 
-            className='w-full h-[100vh] object-cover initial top-0 left-0 z-0' 
-            alt="Launch background" 
-            priority
-          />
-        ) : (
-          <div className="w-full h-[100vh] bg-black absolute top-0 left-0 z-0"></div>
-        )}
+        {currentLaunch?.image?.image_url ? (
+  <div 
+    className="w-full h-[100vh] absolute top-0 left-0 z-0 bg-cover bg-center"
+    style={{ backgroundImage: `url(${currentLaunch.image.image_url})` }}
+  />
+) : (
+  <div className="w-full h-[100vh] bg-gradient-to-br from-blue-900 to-purple-900 absolute top-0 left-0 z-0"></div>
+)}
      </div> 
 
       {readMore && <Description />}
