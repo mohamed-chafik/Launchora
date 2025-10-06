@@ -2,7 +2,7 @@
 
 A modern, responsive web application that displays upcoming rocket launches using real-time data from The Space Devs API. Built with Next.js 15, TypeScript, and Tailwind CSS.
 
-![Launchora]([https://via.placeholder.com/1200x600/0F172A/FFFFFF?text=Launchora+Rocket+Launches](https://launchora-rockets.vercel.app/))
+![Launchora](https://launchora-rockets.vercel.app/)
 
 ## ✨ Features
 
