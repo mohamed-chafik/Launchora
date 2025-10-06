@@ -56,7 +56,7 @@ export default function Home() {
   return (
     <>
       <div className='w-full h-[100vh]'>
-        <div className='z-0 absolute  w-full h-full'>
+        <div className='z-1 absolute  w-full h-full'>
           <div className='w-full h-[80%] flex'>
             <Rocket message={currentLaunch} />
             <Icon onValueChange={handleValueChange}  />
