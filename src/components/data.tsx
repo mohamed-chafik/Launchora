@@ -1,18 +1,18 @@
 'use client';
 import {Geist, Kanit, Ubuntu} from 'next/font/google';
-import {useEffect, useState} from 'react';
-import {launch} from '@/types';
-import {fetchLaunches} from '@/lib/api';
 const geist = Geist({
   weight: '300',
+  subsets: ["latin"], // Add this line
 })
 const kanit = Kanit({
 
   weight: '600',
+    subsets: ["latin"], // or ["latin", "latin-ext"]
 })
 
 const ubuntu = Ubuntu({
   weight: '500',
+    subsets: ["latin"], // or ["latin", "latin-ext"]
 })
 
 export default function Data(){

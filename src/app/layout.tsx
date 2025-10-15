@@ -24,7 +24,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-      <div className="h-fit w-fit text-white z-1 absolute text-[22px] font-bold pl-[30px] pt-[30px]">
+      <div className="h-fit w-fit text-white z-1 absolute text-[14x] font-bold pl-[30px] pt-[30px] md:text-[22px]">
       Launchora
       </div>
         {children}

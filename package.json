@@ -1,7 +1,16 @@
 {
+
+  "name": "launchora",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "NODE_OPTIONS=\"--max-old-space-size=4096\" next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+
   "dependencies": {
-    "@chakra-ui/react": "^3.24.2",
-    "@emotion/react": "^11.14.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.539.0",
