@@ -30,7 +30,7 @@ export default function Rocket({message}) {
         <button className='bg-[#cfef00] rounded-[100px] font-bold py-[0px] px-[5px] md:py-[2px] md:px-[10px]'>
           <span>{message.status.abbrev}</span>
         </button>
-        <h1 className="text-white text-6xl font-[600] text-[25px] md:text-[50px]">
+        <h1 className="text-white text-6xl font-[600] text-[25px] sm:text-[50px]">
           {message.name || 'Mission Name TBA'}
         </h1>
         <p className={`text-white text-base pr-[75px] hidden md:flex ${geist.className}`}>{(message.mission.description.slice(0,300)).slice(0, message.mission.description.slice(0,300).lastIndexOf('.') + 1)}</p>
