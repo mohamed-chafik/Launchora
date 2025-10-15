@@ -49,7 +49,7 @@ export default function Countdown({launch}) {
     </div>
 
   </div> 
-  <button className='absolute right-[18px] hidden  justify-center items-center p-[10px]  hover:rounded-[17px] hover:bg-[#ffffff47] cursor-pointer  md:flex' ><IoIosAddCircleOutline /> ReadMore</button>
+  <button className='absolute right-[18px] hidden  justify-center items-center p-[10px] lg:flex hover:rounded-[17px] hover:bg-[#ffffff47] cursor-pointer  ' ><IoIosAddCircleOutline /> ReadMore</button>
     </div>
     </>
   )
