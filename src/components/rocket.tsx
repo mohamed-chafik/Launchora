@@ -33,7 +33,7 @@ export default function Rocket({message}) {
         <h1 className="text-white text-6xl font-[600] text-[25px] md:text-[50px]">
           {message.name || 'Mission Name TBA'}
         </h1>
-        <p className={`text-white text-base pr-[75px] hidden md:flex ${geist.className}`}>{(message.mission.description.slice(0,300)).slice(0, message.mission.description.slice(0,300).lastIndexOf('.') + 1)}</p>
+        <p className={`text-white text-base pr-[75px] hidden lg:flex ${geist.className}`}>{(message.mission.description.slice(0,300)).slice(0, message.mission.description.slice(0,300).lastIndexOf('.') + 1)}</p>
         <h2 className={`text-white font-bold ${kanit.className}`}>{message.net.slice(0,10)}</h2>
       </div>
     </>
