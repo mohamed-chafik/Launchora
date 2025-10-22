@@ -12,6 +12,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const metadata = {
+  title: "Your App",
+  description: "Description here",
+  viewport: "width=device-width, initial-scale=1.0",
+};
 
 
 export default function RootLayout({
