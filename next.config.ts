@@ -2,6 +2,9 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   // Image configurations
+experimental: {
+    analytics: true,
+  },
   images: {
     unoptimized: true, // Add this if using static export
     remotePatterns: [
