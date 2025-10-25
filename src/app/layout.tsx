@@ -32,19 +32,18 @@ export default function RootLayout({
       <div className="h-fit w-fit text-white z-1 absolute text-[14x] font-bold pl-[30px] pt-[30px] md:text-[22px]">
       Launchora
       </div>
-{/* Google Analytics */}
-      <Script
-        strategy="afterInteractive"
-        src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_ID"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'YOUR_GA_ID');
-        `}
-      </Script>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SR6H2YCJTL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SR6H2YCJTL');
+</script>
+
         {children}
       </body>
     </html>
