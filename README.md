@@ -2,7 +2,7 @@
 
 ## Screenshots
 
-![App Screenshot](https://raw.githubusercontent.com/mohamed-chafik/Launchora/refs/heads/master/public/webpage.png)
+![App Screenshot](https://raw.githubusercontent.com/mohamed-chafik/Launchora/refs/heads/master/public/launchora.png)
 
 
 # Launchora
